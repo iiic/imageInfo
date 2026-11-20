@@ -1,0 +1,52 @@
+{
+	"name": "imageinfo-extension",
+	"version": "1.0.0",
+	"description": "Firefox extension that lists the images of a page with HTTP headers and file metadata (EXIF, GPS, XMP, IPTC, ICC) read from the cache, not downloaded.",
+	"keywords": [
+		"firefox",
+		"webextension",
+		"browser-extension",
+		"images",
+		"exif",
+		"metadata",
+		"http-headers",
+		"xmp",
+		"iptc"
+	],
+	"homepage": "https://github.com/iiic/imageInfo#readme",
+	"bugs": {
+		"url": "https://github.com/iiic/imageInfo/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iiic/imageInfo.git"
+	},
+	"license": "CC-BY-SA-4.0",
+	"author": "iiic (https://iiic.dev)",
+	"type": "module",
+	"files": [
+		"manifest.json",
+		"/*.html",
+		"/*.js",
+		"/*.mjs",
+		"default-settings.json",
+		"modules.json",
+		"service-provider.json",
+		"icon.svg",
+		"_locales/",
+		"content-scripts/",
+		"css/",
+		"icons/",
+		"modules/",
+		"sandbox-modules/",
+		"!**/*.globals.d.ts"
+	],
+	"scripts": {
+		"test": "node --test \"tests/*.test.mjs\"",
+		"prepare": "node scripts/install-hooks.mjs",
+		"prepublishOnly": "npm test"
+	},
+	"engines": {
+		"node": ">=22"
+	}
+}

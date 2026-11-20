@@ -1,0 +1,68 @@
+{
+	"imageInfo_description": {
+		"message": "Zaznamenáva HTTP hlavičky obrázkov (Content-Type, Content-Length, Last-Modified, cachovanie, …) už počas ich načítania a pre Image Info Sandbox vypisuje obrázky stránky — kde ich stránka používa a metadáta ich súborov (EXIF, GPS, XMP, IPTC, ICC) prečítané z cache prehliadača, nikdy znova stiahnuté. Vo Firefoxe vie obrázky z iných pôvodov čítať aj počas načítania. V režime „Pri kliknutí na hlavné tlačidlo rozšírenia“ vypíše obrázky stránky len pri tom kliknutí."
+	},
+	"imageInfo_extension_description": {
+		"message": "Vypíše obrázky stránky s HTTP hlavičkami a metadátami súborov (EXIF, GPS, XMP, IPTC, ICC) prečítanými z cache, bez sťahovania."
+	},
+	"imageInfo_loading": {
+		"message": "Načítavam stav zaznamenávania obrázkov…"
+	},
+	"imageInfo_disabled": {
+		"message": "Vypnuté"
+	},
+	"imageInfo_setting_headers": {
+		"message": "Zaznamenávať HTTP hlavičky obrázkov počas ich načítania"
+	},
+	"imageInfo_setting_capture": {
+		"message": "Čítať metadáta obrázkov z iných pôvodov už počas načítania (každý obrázok každej stránky potom prejde rozšírením; potrebuje povolenia webRequestBlocking a webRequestFilterResponse)"
+	},
+	"imageInfo_setting_max_entries": {
+		"message": "Najviac koľko položiek metadát sa prečíta z jedného súboru obrázka ($1–$2) — zvyšok sa nevypíše (upozornenie „Metadát je príliš veľa“)"
+	},
+	"imageInfo_setting_max_xmp_entries": {
+		"message": "Najviac koľko položiek sa prečíta z jedného XMP paketu súboru obrázka ($1–$2) — napr. Photoshop doň zapisuje celú históriu úprav"
+	},
+	"imageInfo_setting_max_stored_kib": {
+		"message": "Najviac koľko KiB metadát (JSON) sa uloží k obrázku ($1–$2) — pri obrázkoch prečítaných počas načítania alebo stiahnutých znova; ako prvé sa zahodia položky z konca najväčších skupín"
+	},
+	"imageInfo_status_headers_on": {
+		"message": "Image Info zaznamenáva HTTP hlavičky obrázkov na všetkých stránkach."
+	},
+	"imageInfo_status_headers_off": {
+		"message": "Image Info nezaznamenáva hlavičky obrázkov (vypnuté v nastaveniach)."
+	},
+	"imageInfo_status_headers_no_permission": {
+		"message": "Image Info nezaznamenáva hlavičky obrázkov — chýba povolenie webRequest alebo prístup k stránkam."
+	},
+	"imageInfo_status_not_persistent": {
+		"message": "Firefox ich zaznamenáva len do uspania svojej stránky na pozadí — natrvalo až po reštarte prehliadača."
+	},
+	"imageInfo_status_page_access": {
+		"message": "Výpis obrázkov stránky a ich metadáta z cache: Image Info Sandbox."
+	},
+	"imageInfo_status_click_only": {
+		"message": "Obrázky stránky vypíše len po kliknutí na hlavné tlačidlo rozšírenia (aktivačný režim „Pri kliknutí na hlavné tlačidlo rozšírenia“) — Image Info Sandbox potom ukazuje výpis z toho kliknutia."
+	},
+	"imageInfo_status_no_page_access": {
+		"message": "Bez prístupu k stránkam vypíše Image Info Sandbox len zaznamenané hlavičky, bez prvkov stránky a metadát."
+	},
+	"imageInfo_status_capture_on": {
+		"message": "Obrázky z iných pôvodov číta aj počas načítania."
+	},
+	"imageInfo_status_capture_no_permission": {
+		"message": "Čítanie obrázkov z iných pôvodov počas načítania je zapnuté, ale chýbajú na to povolenia."
+	},
+	"imageInfo_status_grant_elsewhere": {
+		"message": "Povoliť ich môžeš v popupe, bočnom paneli alebo v Nastaveniach."
+	},
+	"imageInfo_btn_grant": {
+		"message": "Udeliť povolenia"
+	},
+	"imageInfo_status_error": {
+		"message": "Stav nie je k dispozícii ($2)."
+	},
+	"imageInfo_status_no_response": {
+		"message": "časť na pozadí neodpovedala"
+	}
+}

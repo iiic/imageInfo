@@ -1,0 +1,5 @@
+[
+	"./modules/onboardingModule/onboardingModule.mjs",
+	"./modules/imageInfo/imageInfo.mjs",
+	"sandbox://imageInfoSandbox/imageInfoSandbox.js"
+]

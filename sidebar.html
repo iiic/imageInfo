@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title data-i18n="sidebar_page_title">Image Info - sidebar</title>
+	<link rel="stylesheet" href="./css/mvp.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/theme-light.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/sidebar.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/module-frame.css" crossorigin="anonymous">
+	<!-- Appearance choice (light/dark) — switched by the styleSwitch module (modules/styleSwitch/pageStyles.mjs); the href must be the same on all pages. -->
+	<link rel="alternate stylesheet" href="./css/theme-light.css" title="Světlý" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/theme-dark.css" title="Tmavý" media="(prefers-color-scheme: dark)" crossorigin="anonymous">
+</head>
+
+<body>
+	<!-- Module filter: hides the module outputs whose name or id does not contain the text (mountModuleFilter() in
+	     base.mjs). Shown only from OUTPUT_MODULE_FILTER_MIN modules sent to the panel. -->
+	<div class="module-filter" id="module-filter" hidden>
+		<label><span data-i18n="core_module_filter_label">Filter by name</span>
+			<input type="search" id="module-filter-input" list="module-filter-names" autocomplete="off" spellcheck="false">
+		</label>
+		<datalist id="module-filter-names"></datalist>
+	</div>
+
+	<div id="modules-output"></div>
+
+	<script type="module" src="./sidebar.mjs" crossorigin="anonymous"></script>
+</body>
+
+</html>

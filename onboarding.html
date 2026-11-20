@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title data-i18n="onboarding_page_title">Image Info - welcome page (onboarding)</title>
+	<link rel="stylesheet" href="./css/mvp.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/theme-light.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/onboarding.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/module-frame.css" crossorigin="anonymous">
+	<!-- Appearance choice (light/dark) — switched by the styleSwitch module (modules/styleSwitch/pageStyles.mjs), href must be the same on all pages. -->
+	<link rel="alternate stylesheet" href="./css/theme-light.css" title="Světlý" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/theme-dark.css" title="Tmavý" media="(prefers-color-scheme: dark)" crossorigin="anonymous">
+</head>
+
+<body>
+	<header>
+		<!-- UI language — the same menu as at the top of the Options page
+	     (initUiLanguageSelect() in i18n.mjs). Placed at the top so a new user
+	     can switch it before starting to read the module outputs. -->
+		<div class="onboarding-language">
+			<label><span data-i18n="core_ui_language">Language</span>
+				<select id="ui-language"></select>
+			</label>
+		</div>
+	</header>
+
+	<main>
+
+		<!-- The status of Image Info with the button that grants its permissions (standalone.json puts it here). -->
+		<section id="modules-output"></section>
+
+		<section>
+			<p>Welcome to <strong>Image Info</strong> — a Firefox extension that lists all images of the page you are on with everything that can be found out about them: where the page uses them, how they loaded, their HTTP response headers and the metadata of their files (EXIF with the camera and GPS position, XMP, IPTC, the ICC color profile). The metadata is read from what the browser already has, so the images are not downloaded again.</p>
+		</section>
+		<hr>
+		<div id="figure">
+			<header>
+				<h1>Image Info</h1>
+			</header>
+		</div>
+
+		<!-- Shown by onboarding.mjs when no module outputs anything to the welcome page. -->
+		<p id="onboarding-empty" class="onboarding-empty" hidden data-i18n-html="onboarding_empty_html">
+			Thank you for using this extension. Take a look at the <a href="./options.html" target="_blank">extension settings</a>, where you can adjust more options than just the language.
+		</p>
+
+		<article id="docs">
+			<h2>Getting Started</h2>
+			<h3>Step 1: Grant the permissions</h3>
+			<p><strong>The extension needs them to work.</strong> The box at the top of this page shows what Image Info records. Click <strong>Grant the permissions</strong> there (the same box is in Settings) and allow:</p>
+			<ul>
+				<li><strong>access to all websites</strong> — to list the images of a page and read their files from the browser cache,</li>
+				<li><strong>webRequest</strong> — to record the HTTP headers of images while pages load them.</li>
+			</ul>
+			<p>Images loaded before that have no recorded headers — reload the page. Firefox keeps recording the headers only until its background page goes to sleep; after the next restart of the browser it records them permanently.</p>
+			<h3>Step 2: Open the listing</h3>
+			<ul>
+				<li>Click the extension button in the toolbar — the popup lists the images of the current page.</li>
+				<li>For more room, open the sidebar: Firefox menu &rarr; View &rarr; Sidebar &rarr; Image Info. The sidebar stays next to the page.</li>
+			</ul>
+			<p>The listing lists the page when it is shown; the <strong>Refresh</strong> button lists it again, for example after you scroll to images that load lazily. To let the sidebar follow another tab or a new address by itself, choose a "Start automatically" activation mode of Image Info Sandbox in Settings.</p>
+
+			<h2>What the Listing Shows</h2>
+			<p>Each image has a line with its name, size and badges. Its details show:</p>
+			<ul>
+				<li><strong>On the page</strong> — every place the page uses it: <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code>, CSS backgrounds, icons, video posters, images in SVG, preloads; the rendered and the natural size, whether it is hidden or outside the visible area, and its text alternative.</li>
+				<li><strong>Loading</strong> — the status, from the cache or not, protocol, IP address, loading time, transferred and decoded size, redirects.</li>
+				<li><strong>HTTP headers</strong> — the response headers as the browser received them (Content-Type, Content-Length, Last-Modified, Cache-Control, …).</li>
+				<li><strong>Metadata</strong> — the format and its structure, dimensions, colors, JPEG quality, animation frames, the color profile, and from EXIF, XMP and IPTC the camera, lens, date of the shot, GPS position (with a link to a map), author, copyright, title, description and software.</li>
+			</ul>
+			<p>Badges point out what is worth a look: a tracking pixel, mixed content (an image over http on an https page), an oversized image or a large file, an <code>&lt;img&gt;</code> without width and height, an image without a text alternative, a file type that does not match its Content-Type header, a serial number of the camera or lens, a thumbnail embedded in the file (it may show the photo before a crop).</p>
+
+			<h3>The toolbar of the listing</h3>
+			<ul>
+				<li><strong>Search</strong> and <strong>Order</strong> — as on the page, largest first, by name, by format.</li>
+				<li><strong>Ignore small images</strong> — leaves out tracking pixels, spacers and small icons (the size is set in Settings).</li>
+				<li><strong>Hide images not on the page</strong> — images the page only loaded (the tab icon, an image loaded by a script).</li>
+				<li><strong>Clean dynamically</strong> — when a web app changes its address without loading a new page, the images from before are left out.</li>
+				<li><strong>Only important</strong> — only the images with an important badge.</li>
+			</ul>
+
+			<h3>Buttons of an image</h3>
+			<ul>
+				<li><strong>Save image</strong> — saves the file the browser already has; <strong>Download</strong> when it has to be downloaded again.</li>
+				<li><strong>Load information</strong> — when headers or metadata are missing, downloads the image once more (optionally anonymously, without cookies).</li>
+				<li><strong>Thumbnail</strong> — downloads the image once more and shows it in the listing.</li>
+				<li><strong>Remove from the document</strong> — removes the image from the page in the tab until the page is reloaded.</li>
+				<li><strong>Record permanently</strong> — keeps what the listing knows about the image in the extension, also after the tab is closed and the browser restarts.</li>
+			</ul>
+
+			<h2>Permanent Records and Serial Numbers</h2>
+			<p>The section <strong>Permanently recorded images</strong> at the top of the listing keeps the records — on any page. By default an image whose metadata contains the serial number of the camera or of the lens is recorded by itself. When another page shows a photo with a serial number you have already recorded, the image gets the badge <strong>S/N match</strong> and its details list the matching records: the photos were most likely taken with the same device. A notification about such a match can be turned on in Settings.</p>
+
+			<h2>Notices About Images</h2>
+			<p>In Settings, the table of notices says for every property (a GPS position, a known camera, a tracking pixel, mixed content, …) what the listing does with an image that has it: show a badge, mark it important (never hidden), send a notification, record it permanently, or show the badge over the image on the page itself. Notifications and badges on the page work while the listing is open, for example in the sidebar.</p>
+
+			<h2>Images From Other Origins</h2>
+			<p>The metadata of an image comes from the browser cache, and only a file of the page's own origin can be read from there. In Firefox, turn on <strong>Read the metadata of images of other origins while they load</strong> in Settings: every image of every page then passes through the extension while it loads, so its metadata is known without downloading it again. It needs two more permissions (<code>webRequestBlocking</code>, <code>webRequestFilterResponse</code>) and applies from the next load of a page.</p>
+
+			<h2>Privacy</h2>
+			<p><strong>Your data stays on your device.</strong> The extension sends nothing anywhere. It reads what the browser already has; only the buttons <strong>Load information</strong>, <strong>Download</strong> and <strong>Thumbnail</strong> download an image once more — from the server the page loaded it from. The map link of a GPS position opens OpenStreetMap only when you click it.</p>
+		</article>
+		<hr>
+		<p>Thank you for using Image Info.</p>
+		<p>For questions, issues, or to learn more, visit the extension page on <a href="https://addons.mozilla.org" target="_blank">Firefox Add-ons</a>.</p>
+	</main>
+	<footer>
+		<hr>
+		<p>Created by <a href="https://iiic.dev/#imageInfo" target="_blank">ic</a><br></p>
+		<p>the extension icon comes from <a href="https://www.svgrepo.com">SVG Repo</a></p>
+		<p>and mvp.css <a href="https://github.com/andybrewer/mvp">https://github.com/andybrewer/mvp</a> for the extension UI styling</p>
+	</footer>
+	<script type="module" src="./onboarding.mjs" crossorigin="anonymous"></script>
+</body>
+
+</html>

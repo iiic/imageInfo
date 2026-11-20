@@ -1,0 +1,68 @@
+{
+	"imageInfo_description": {
+		"message": "Zeichnet die HTTP-Header von Bildern (Content-Type, Content-Length, Last-Modified, Caching, …) schon beim Laden der Seiten auf und listet für Image Info Sandbox die Bilder einer Seite auf — wo die Seite sie verwendet und die Metadaten ihrer Dateien (EXIF, GPS, XMP, IPTC, ICC), aus dem Browser-Cache gelesen, nie erneut heruntergeladen. In Firefox kann es die Bilder anderer Ursprünge auch beim Laden lesen. Im Modus „Beim Klick auf die Hauptschaltfläche der Erweiterung“ listet es die Bilder einer Seite nur bei diesem Klick auf."
+	},
+	"imageInfo_extension_description": {
+		"message": "Listet Bilder einer Seite mit HTTP-Headern und Datei-Metadaten (EXIF, GPS, XMP, IPTC, ICC) auf – aus dem Cache, ohne Neudownload."
+	},
+	"imageInfo_loading": {
+		"message": "Status der Bildaufzeichnung wird geladen…"
+	},
+	"imageInfo_disabled": {
+		"message": "Ausgeschaltet"
+	},
+	"imageInfo_setting_headers": {
+		"message": "Die HTTP-Header von Bildern beim Laden der Seiten aufzeichnen"
+	},
+	"imageInfo_setting_capture": {
+		"message": "Die Metadaten von Bildern anderer Ursprünge schon beim Laden lesen (jedes Bild jeder Seite geht dann durch die Erweiterung; benötigt die Berechtigungen webRequestBlocking und webRequestFilterResponse)"
+	},
+	"imageInfo_setting_max_entries": {
+		"message": "Höchstzahl der Metadaten-Einträge, die aus einer Bilddatei gelesen werden ($1–$2) — der Rest wird nicht aufgelistet (Hinweis „Zu viele Metadaten“)"
+	},
+	"imageInfo_setting_max_xmp_entries": {
+		"message": "Höchstzahl der Einträge, die aus einem XMP-Paket einer Bilddatei gelesen werden ($1–$2) — Photoshop schreibt dort z. B. den gesamten Bearbeitungsverlauf hinein"
+	},
+	"imageInfo_setting_max_stored_kib": {
+		"message": "Höchstgröße der Metadaten, die zu einem Bild gespeichert werden, in KiB JSON ($1–$2) — bei Bildern, die beim Laden gelesen oder erneut heruntergeladen wurden; zuerst fallen die Einträge vom Ende der größten Gruppen weg"
+	},
+	"imageInfo_status_headers_on": {
+		"message": "Image Info zeichnet die HTTP-Header von Bildern auf allen Seiten auf."
+	},
+	"imageInfo_status_headers_off": {
+		"message": "Image Info zeichnet die Header von Bildern nicht auf (in den Einstellungen ausgeschaltet)."
+	},
+	"imageInfo_status_headers_no_permission": {
+		"message": "Image Info zeichnet die Header von Bildern nicht auf — die Berechtigung webRequest oder der Zugriff auf die Seiten fehlt."
+	},
+	"imageInfo_status_not_persistent": {
+		"message": "Firefox zeichnet sie nur auf, bis seine Hintergrundseite einschläft — dauerhaft erst nach einem Neustart des Browsers."
+	},
+	"imageInfo_status_page_access": {
+		"message": "Die Liste der Bilder einer Seite und ihre Metadaten aus dem Cache: Image Info Sandbox."
+	},
+	"imageInfo_status_click_only": {
+		"message": "Es listet die Bilder einer Seite nur beim Klick auf die Hauptschaltfläche der Erweiterung auf (der Aktivierungsmodus „Beim Klick auf die Hauptschaltfläche der Erweiterung“) — Image Info Sandbox zeigt dann die Liste dieses Klicks."
+	},
+	"imageInfo_status_no_page_access": {
+		"message": "Ohne Zugriff auf die Seiten listet Image Info Sandbox nur die aufgezeichneten Header auf, ohne die Elemente der Seite und die Metadaten."
+	},
+	"imageInfo_status_capture_on": {
+		"message": "Es liest die Bilder anderer Ursprünge auch beim Laden."
+	},
+	"imageInfo_status_capture_no_permission": {
+		"message": "Das Lesen der Bilder anderer Ursprünge beim Laden ist eingeschaltet, aber die Berechtigungen dafür fehlen."
+	},
+	"imageInfo_status_grant_elsewhere": {
+		"message": "Sie können sie im Pop-up, in der Seitenleiste oder in den Einstellungen gewähren."
+	},
+	"imageInfo_btn_grant": {
+		"message": "Berechtigungen gewähren"
+	},
+	"imageInfo_status_error": {
+		"message": "Der Status ist nicht verfügbar ($2)."
+	},
+	"imageInfo_status_no_response": {
+		"message": "der Hintergrundteil hat nicht geantwortet"
+	}
+}

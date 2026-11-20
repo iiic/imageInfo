@@ -1,0 +1,25 @@
+/* Look of the imageInfo module — the core attaches the file to the <head> of every surface on which the element is
+   rendered (see STYLES in module.mjs). Everything is nested under the element's tag; colors from the appearance
+   variables (css/theme-*.css, mvp.css), so they fit both the light and the dark look.
+
+   The element is only the status of the recording with the permission button — the listing of the images of the page
+   is imageInfoSandbox (sandbox-modules/imageInfoSandbox/imageInfoSandbox.css). */
+
+extension-image-info {
+	.image-info-status p {
+		margin: 0 0 4px;
+	}
+	.image-info-status__warning {
+		color: var(--color-error);
+	}
+	.image-info-status__note {
+		font-size: 0.9em;
+		color: var(--color-text-muted);
+	}
+	/* Permission button — smaller than the default from mvp.css. */
+	.image-info-status button {
+		margin: 2px 0;
+		padding: 2px 10px;
+		font-size: 0.9em;
+	}
+}

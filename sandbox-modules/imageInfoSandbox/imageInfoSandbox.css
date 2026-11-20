@@ -1,0 +1,364 @@
+/* Look of the listing of the images of the page — a file of the package (registerModule({ styles }), see STYLES in
+   module.mjs): the sandbox applies it to its own page after mvp.css, so it reaches nothing outside the module's sandbox
+   frame. Colors from the appearance variables the sandbox page gets from the page that embeds it (--color-…, see
+   collectSandboxTheme() in base.mjs), so they fit both the light and the dark look. Everything is nested under the
+   element's tag. */
+
+extension-image-info-sandbox {
+	.iis-status:empty {
+		display: none;
+	}
+	.iis-status__line {
+		margin: 0 0 4px;
+	}
+	.iis-status__line--error,
+	.iis-status__line--warning {
+		color: var(--color-error);
+	}
+	.iis-status__line--note {
+		font-size: 0.9em;
+		color: var(--color-text-muted);
+	}
+	.iis-status__button,
+	.iis-fetch__button,
+	.iis-toolbar__refresh {
+		margin: 0;
+		padding: 2px 10px;
+		font-size: 0.9em;
+	}
+
+	/* The button "Load information" at the top of the details of an image, with its note (or the error). */
+	.iis-fetch {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		align-items: center;
+		margin: 0 0 8px;
+	}
+	.iis-fetch__anonymous {
+		font-size: 0.9em;
+		white-space: nowrap;
+	}
+	/* "Record permanently" — an outline button: the background of the page (white in the light look), a border and the text
+	   in the primary color (the color of links); disabled (recorded) in the look of mvp.css. */
+	.iis-fetch__record:not(:disabled) {
+		background-color: var(--color-bg);
+		border-color: var(--color-link);
+		color: var(--color-link);
+	}
+
+	/* The section "Permanently recorded images (N)" above the toolbar: a collapsed <details> without the box of mvp.css; the
+	   records are lines like the images of the page, each with the time and the page under its name. */
+	.iis-records {
+		margin: 4px 0;
+	}
+	.iis-records[hidden] {
+		display: none;
+	}
+	.iis-records__title {
+		font-size: 0.95em;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.iis-records__list {
+		margin: 2px 0 6px;
+		padding-left: 1ch;
+	}
+	.iis-record__when {
+		flex: 1 1 100%;
+		font-size: 0.85em;
+		color: var(--color-text-muted);
+		overflow-wrap: anywhere;
+	}
+	/* The records of one serial number (a group of the section): its records indented under its line, without the line of
+	   the last one (the line of the group closes it). */
+	.iis-record-group__list {
+		margin: 2px 0 2px 2ch;
+		padding: 0;
+		list-style: none;
+	}
+	.iis-record-group__list > .iis-item:last-child {
+		border-bottom: none;
+	}
+	/* The matching records in the details of an image (the section "Serial number match"): one line each. */
+	.iis-matches {
+		margin: 2px 0;
+		padding-left: 2ch;
+		overflow-wrap: anywhere;
+	}
+	/* The thumbnail: at most its own size, never wider than the listing (no scrollbars). */
+	.iis-thumb__img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin: 2px 0;
+	}
+	.iis-fetch__note:empty {
+		display: none;
+	}
+	.iis-fetch__note {
+		font-size: 0.85em;
+		opacity: 0.8;
+	}
+	.iis-fetch__note--error {
+		color: #b00020;
+		opacity: 1;
+	}
+
+	/* The toolbar: the summary on its own line on narrow surfaces, then the search, the order and the button. */
+	.iis-toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		align-items: center;
+		margin: 4px 0;
+	}
+	.iis-toolbar[hidden] {
+		display: none;
+	}
+	.iis-toolbar__summary {
+		flex: 1 1 100%;
+		font-size: 0.9em;
+		color: var(--color-text-muted);
+	}
+	.iis-toolbar__search {
+		flex: 1 1 140px;
+		min-width: 0;
+		margin: 0;
+		padding: 2px 6px;
+	}
+	.iis-toolbar__sort {
+		margin: 0;
+		padding: 2px 4px;
+	}
+	.iis-toolbar__refresh[aria-busy="true"] {
+		opacity: 0.6;
+	}
+	/* Ignoring small images: a checkbox with its text on one line (mvp.css makes a label a block and an input wide). */
+	.iis-toolbar__small {
+		display: inline-flex;
+		gap: 4px;
+		align-items: center;
+		margin: 0;
+		font-size: 0.9em;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.iis-toolbar__small input {
+		width: auto;
+		margin: 0;
+	}
+
+	.iis-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.iis-list__empty {
+		color: var(--color-text-muted);
+	}
+	.iis-item {
+		padding: 2px 4px;
+		border-bottom: 1px solid var(--color-border);
+	}
+	/* The image the page shows in the viewport right now — a light tint of the color of links; the one under the mouse
+	   pointer (or tapped last) — a stronger one with a bar at the edge (imageInfo.onView). Forced colors drop backgrounds —
+	   outlines then. */
+	.iis-item--visible {
+		background-color: color-mix(in srgb, var(--color-link) 12%, transparent);
+	}
+	.iis-item--hovered {
+		background-color: color-mix(in srgb, var(--color-link) 32%, transparent);
+		box-shadow: inset 3px 0 0 var(--color-link);
+	}
+	/* An image the list would hide (a small one, …), shown only while it is under the pointer — a dashed outline. */
+	.iis-item--revealed {
+		outline: 1px dashed var(--color-link);
+		outline-offset: -1px;
+	}
+	@media (forced-colors: active) {
+		.iis-item--visible {
+			outline: 1px dashed CanvasText;
+			outline-offset: -1px;
+		}
+		.iis-item--hovered {
+			outline: 2px solid Highlight;
+			outline-offset: -2px;
+		}
+	}
+	/* An image is a <details> — without the margins and bold font from mvp.css. */
+	.iis-item__details {
+		margin: 0;
+	}
+	.iis-item__summary {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2px 6px;
+		align-items: baseline;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.iis-item__summary::marker {
+		color: var(--color-text-muted);
+	}
+	.iis-item__index {
+		min-width: 2ch;
+		font-size: 0.8em;
+		color: var(--color-text-muted);
+		text-align: right;
+	}
+	.iis-item__name {
+		font-weight: 600;
+		overflow-wrap: anywhere;
+	}
+	.iis-item__facts {
+		font-size: 0.9em;
+		color: var(--color-text-muted);
+	}
+	.iis-item__chips {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 2px 4px;
+	}
+	.iis-chip {
+		display: inline-block;
+		padding: 0 6px;
+		border: 1px solid currentColor;
+		border-radius: 999px;
+		font-size: 0.75em;
+		line-height: 1.4;
+		color: var(--color-text-label);
+	}
+	.iis-chip--error,
+	.iis-chip--warning {
+		color: var(--color-error);
+	}
+	.iis-chip--info,
+	.iis-chip--record {
+		color: var(--color-link);
+	}
+	.iis-chip--muted {
+		color: var(--color-text-muted);
+	}
+	/* Everything about the image is loaded (the HTTP headers and the metadata) — only the sign ✓ — the camera is known —
+	   only 📷, and the date of the shot is known — only 📅; the title says the rest. */
+	.iis-chip--ok {
+		font-weight: 700;
+		color: var(--color-success);
+	}
+	/* An image removed from the page (the button "Remove from the document"): the badge and its name crossed out. */
+	.iis-chip--removed {
+		border-style: dashed;
+		color: var(--color-error);
+	}
+	.iis-item--removed .iis-item__name,
+	.iis-usage--removed .iis-usage__head code {
+		text-decoration: line-through;
+		color: var(--color-text-muted);
+	}
+
+	.iis-item__body {
+		padding: 4px 0 8px 2ch;
+	}
+	.iis-section {
+		margin: 0 0 8px;
+		text-align: left;
+	}
+	.iis-section__title {
+		margin: 6px 0 2px;
+		font-size: 0.95em;
+		text-align: left;
+	}
+	.iis-address {
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+	.iis-url {
+		overflow-wrap: anywhere;
+	}
+	.iis-note {
+		margin: 2px 0;
+		font-size: 0.9em;
+		color: var(--color-text-muted);
+	}
+	.iis-warning {
+		margin: 2px 0;
+		font-size: 0.9em;
+		color: var(--color-error);
+	}
+
+	/* Definitions as a two-column grid: the term, the value (long values wrap anywhere). */
+	.iis-definitions {
+		display: grid;
+		grid-template-columns: max-content minmax(0, 1fr);
+		gap: 1px 10px;
+		margin: 2px 0;
+		font-size: 0.9em;
+	}
+	.iis-definitions dt {
+		margin: 0;
+		font-weight: normal;
+		color: var(--color-text-label);
+	}
+	.iis-definitions dd {
+		margin: 0;
+		white-space: pre-line;
+		overflow-wrap: anywhere;
+	}
+
+	.iis-usages {
+		margin: 0;
+		padding-left: 1.2em;
+	}
+	.iis-usage {
+		margin: 0 0 4px;
+	}
+	.iis-usage__head {
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+
+	/* Tables of the headers and of the metadata — a plain full-width table instead of the inline, centered and striped one of
+	   mvp.css. */
+	.iis-table {
+		display: table;
+		width: 100%;
+		margin: 2px 0;
+		border: none;
+		border-collapse: collapse;
+		font-size: 0.85em;
+		table-layout: fixed;
+		white-space: normal;
+	}
+	.iis-table tr,
+	.iis-table tr:nth-child(even) {
+		padding: 0;
+		background: none;
+	}
+	.iis-table th,
+	.iis-table td {
+		padding: 1px 6px 1px 0;
+		border: none;
+		border-bottom: 1px solid var(--color-border);
+		text-align: left;
+		vertical-align: top;
+		overflow-wrap: anywhere;
+		white-space: pre-wrap;
+	}
+	.iis-table th {
+		width: 38%;
+		font-weight: normal;
+		color: var(--color-text-label);
+	}
+	.iis-table__row--highlight th {
+		font-weight: 600;
+		color: var(--color-text);
+	}
+	.iis-group {
+		margin: 2px 0;
+	}
+	.iis-group__summary {
+		font-weight: normal;
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"imageInfo.displayLocation": [
+		"options",
+		"onboarding"
+	],
+	"imageInfoSandbox.displayLocation": [
+		"popup",
+		"sidebar"
+	],
+	"onboardingModule.displayLocation": "none"
+}

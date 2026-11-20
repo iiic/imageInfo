@@ -1,0 +1,68 @@
+{
+	"imageInfo_description": {
+		"message": "Records the HTTP headers of images (Content-Type, Content-Length, Last-Modified, caching, …) while pages load them, and lists the images of a page for Image Info Sandbox — where the page uses them and the metadata of their files (EXIF, GPS, XMP, IPTC, ICC) read from the browser cache, never downloaded again. In Firefox it can also read the images of other origins while they load. In the mode “On click of the main extension button” it lists the images of a page only at that click."
+	},
+	"imageInfo_extension_description": {
+		"message": "Lists the images of a page with HTTP headers and file metadata (EXIF, GPS, XMP, IPTC, ICC) read from the cache, not downloaded."
+	},
+	"imageInfo_loading": {
+		"message": "Loading the status of recording the images…"
+	},
+	"imageInfo_disabled": {
+		"message": "Turned off"
+	},
+	"imageInfo_setting_headers": {
+		"message": "Record the HTTP headers of images while pages load them"
+	},
+	"imageInfo_setting_capture": {
+		"message": "Read the metadata of images of other origins while they load (every image of every page then passes through the extension; it needs the permissions webRequestBlocking and webRequestFilterResponse)"
+	},
+	"imageInfo_setting_max_entries": {
+		"message": "Most metadata entries read from one image file ($1–$2) — the rest is not listed (the warning “Too much metadata”)"
+	},
+	"imageInfo_setting_max_xmp_entries": {
+		"message": "Most entries read from one XMP packet of an image file ($1–$2) — Photoshop, for instance, writes its whole edit history there"
+	},
+	"imageInfo_setting_max_stored_kib": {
+		"message": "Most metadata stored for an image, in KiB of JSON ($1–$2) — for images read while loading or downloaded again; the entries from the end of the largest groups go first"
+	},
+	"imageInfo_status_headers_on": {
+		"message": "Image Info records the HTTP headers of images on all pages."
+	},
+	"imageInfo_status_headers_off": {
+		"message": "Image Info does not record the headers of images (turned off in the settings)."
+	},
+	"imageInfo_status_headers_no_permission": {
+		"message": "Image Info does not record the headers of images — the webRequest permission or the access to the pages is missing."
+	},
+	"imageInfo_status_not_persistent": {
+		"message": "Firefox records them only until its background page goes to sleep — permanently after a restart of the browser."
+	},
+	"imageInfo_status_page_access": {
+		"message": "The listing of the images of a page and their metadata from the cache: Image Info Sandbox."
+	},
+	"imageInfo_status_click_only": {
+		"message": "It lists the images of a page only when you click the main extension button (the activation mode “On click of the main extension button”) — Image Info Sandbox then shows the listing of that click."
+	},
+	"imageInfo_status_no_page_access": {
+		"message": "Without the access to the pages Image Info Sandbox lists only the recorded headers, without the elements of the page and the metadata."
+	},
+	"imageInfo_status_capture_on": {
+		"message": "It also reads the images of other origins while they load."
+	},
+	"imageInfo_status_capture_no_permission": {
+		"message": "Reading the images of other origins while they load is turned on, but the permissions for it are missing."
+	},
+	"imageInfo_status_grant_elsewhere": {
+		"message": "You can grant them in the popup, the side panel or in Settings."
+	},
+	"imageInfo_btn_grant": {
+		"message": "Grant the permissions"
+	},
+	"imageInfo_status_error": {
+		"message": "The status is not available ($2)."
+	},
+	"imageInfo_status_no_response": {
+		"message": "the background part did not answer"
+	}
+}
